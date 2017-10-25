@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mxnet_predict</name>
+  <version>0.11.0</version>
+  <description>mxnet prediction c api in a ros package</description>
+  <license>Apache 2.0</license>
+
+  <maintainer email="paspartout@fogglabs.de">Phileas Vöcking</maintainer>
+  <url type="website">http://mxnet.incubator.apache.org/</url>
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>
