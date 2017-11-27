@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>mxnet_predict</name>
-  <version>0.11.0</version>
+  <version>0.12.0</version>
   <description>mxnet prediction c api in a ros package</description>
   <license>Apache 2.0</license>
 
