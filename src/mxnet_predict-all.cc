@@ -23130,11 +23130,11 @@ class Symbol {
 #endif
 
 /*! \brief major version */
-#define MXNET_MAJOR 0
+#define MXNET_MAJOR 1
 /*! \brief minor version */
-#define MXNET_MINOR 12
+#define MXNET_MINOR 0
 /*! \brief patch version */
-#define MXNET_PATCH 1
+#define MXNET_PATCH 0
 /*! \brief mxnet version */
 #define MXNET_VERSION (MXNET_MAJOR*10000 + MXNET_MINOR*100 + MXNET_PATCH)
 /*! \brief helper for making version number */
@@ -23987,6 +23987,12 @@ class Graph {
   template<typename T>
   inline const T& GetAttr(const std::string& attr_name) const;
   /*!
+   * \brief Check whether has a specific attribute.
+   * \param attr_name the name of the attribute
+   * \return a boolean result
+   */
+  inline bool HasAttr(const std::string& attr_name) const;
+  /*!
    * \brief Get a move copy of the attribute, implement copy on write semantics.
    *  The content is moved if the reference counter of shared_ptr is 1.
    *  The attribute is erased from attrs after the call.
@@ -24163,6 +24169,11 @@ inline const T& Graph::GetAttr(const std::string& attr_name) const {
   CHECK(it != attrs.end())
       << "Cannot find attribute " << attr_name << " in the graph";
   return nnvm::get<T>(*it->second);
+}
+
+inline bool Graph::HasAttr(const std::string& attr_name) const {
+  auto it = attrs.find(attr_name);
+  return it != attrs.end();
 }
 
 template<typename T>
@@ -30929,7 +30940,7 @@ class OperatorTuneByType : public OperatorTuneBase {
    * \brief Get the current tuning mode
    * \return tune::TuningMode value for the current tuning mode
    */
-  static MSHADOW_CINLINE volatile tune::TuningMode tuning_mode() {
+  static MSHADOW_CINLINE tune::TuningMode tuning_mode() {
     return tuning_mode_;
   }
 
@@ -34424,25 +34435,6 @@ double sqr(double a) {
 //===== EXPANDED  : ../src/operator/math_functions-inl.h =====
 
 //=====[150] STAGE: src         EXPANDING: ../src/operator/special_functions-inl.h =====
-
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 
 /*!
  * Copyright (c) 2015 by Contributors
@@ -51964,6 +51956,25 @@ Graph DetectInplaceAddTo(Graph g) {
 
 //=====[185] STAGE: src   EXPANDING: ../src/nnvm/legacy_json_util.cc =====
 
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
 /*!
  *  Copyright (c) 2016 by Contributors
  * \file legacy_json_util.cc
@@ -52164,6 +52175,25 @@ NNVM_REGISTER_PASS(LoadLegacyJSON)
 //===== EXPANDED  : ../src/nnvm/legacy_json_util.cc =====
 
 //=====[186] STAGE: src   EXPANDING: ../src/nnvm/legacy_op_util.cc =====
+
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 
 /*!
  *  Copyright (c) 2015 by Contributors
@@ -60520,25 +60550,6 @@ NNVM_REGISTER_OP(LeakyReLU)
 #define MXNET_OPERATOR_POOLING_INL_H_
 
 //=====[212] STAGE: src       EXPANDING: ../src/operator/nn/pool.h =====
-
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
 
 /*!
  ******************* BEGIN Caffe Copyright Notice and Disclaimer ****************
